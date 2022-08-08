@@ -7,13 +7,15 @@ class WidgetServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->load_core_widget($this->app);
+        $this->loadCoreWidget();
     }
-    private function load_core_widget($app)
+    private function loadCoreWidget()
     {
-        $pathWidgetFunction = __DIR__.'/helpers.php';
-        if (file_exists($pathWidgetFunction))
-            require_once($pathWidgetFunction);
+        $path_widget_function = __DIR__.'/helpers.php';
+        if (file_exists($path_widget_function)){
+            require_once($path_widget_function);
+            fgc_auto_load_widgets();
+        }
     }
 
     /**
