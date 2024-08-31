@@ -1,0 +1,85 @@
+<?php
+
+namespace FGCWidgets\$NAMESPACE_WIDGET$;
+
+use App\Fgc\FE;
+use Illuminate\Support\ServiceProvider;
+
+class FGCServiceProvider extends ServiceProvider
+{
+    /**
+     * @var string $widgetName
+     */
+    protected $widgetName = '$WIDGET_NAME$';
+
+    /**
+     * @var string $widgetNameLower
+     */
+    protected $widgetNameLower = '$LOWER_WIDGET_NAME$';
+
+    /**
+     * Boot the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerTranslations();
+        $this->registerViews();
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //$this->app->register(RouteServiceProvider::class);
+    }
+
+
+
+    /**
+     * Register views.
+     *
+     * @return void
+     */
+    public function registerViews()
+    {
+        $viewPath = resource_path('views/themes/' . FE::getCurrentTheme() . '/widgets/' . $this->widgetNameLower);
+        $sourcePath = fgc_widget_path($this->widgetName, 'Resources/views');
+        $namespace = $this->widgetNameLower;
+        $wthemenamespace = 'theme' . $this->widgetNameLower;
+        $this->callAfterResolving('view', function ($view) use ($viewPath, $sourcePath, $namespace, $wthemenamespace) {
+            $view->addNamespace($namespace, $sourcePath);
+            $view->addNamespace($wthemenamespace, $viewPath);
+        });
+    }
+
+    /**
+     * Register translations.
+     *
+     * @return void
+     */
+    public function registerTranslations()
+    {
+        $langPath = resource_path('lang/widgets/' . $this->widgetNameLower);
+        if (is_dir($langPath)) {
+            $this->loadTranslationsFrom($langPath, $this->widgetNameLower);
+        } else {
+            $this->loadTranslationsFrom(fgc_widget_path($this->widgetName, 'Resources/lang'), $this->widgetNameLower);
+        }
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [];
+    }
+}
+

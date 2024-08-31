@@ -1,0 +1,44 @@
+<?php
+/**
+ * SimpleWidget
+ * @authoer: Hoang Bien <hoangbien@fgc.vn>
+ */
+namespace FGCWidgets\$NAMESPACE_WIDGET$;
+
+use App\Models\Post;
+use FGCQuickWeb\Widgets\WidgetBase;
+use App\Repositories\PostRepository;
+
+class $CLASS_NAME$ extends WidgetBase {
+
+    var $repository = null;
+
+    public function __construct(PostRepository $post) {
+        $this->repository = $post;
+        $this->nameWidget = 'simplewidget';
+        parent::__construct();
+    }
+
+    public function data() {
+        return [
+            'name' => 'Simple Widget',
+            'description' => 'Simple Widget Description',
+            'action' => 'theme_simplewidget_post_list' //Tên action quy định theme_[ten_widget]_[tên_gợi_nhơ]
+        ];
+    }
+
+    public function widget($data) {
+        $posts = $this->repository
+                ->query()
+                ->withLang()
+                ->isActive()
+                ->whereExist('lang')
+                ->isType('post')
+                ->latest()
+                ->limit(10)
+                ->get();
+        echo $this->view('index', compact('posts')); //index là tên của bale template trong thư mục Resources/view của widget hoặc
+    }
+
+}
+
