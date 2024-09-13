@@ -2,6 +2,21 @@
 
 namespace FGCQuickWeb\Widgets\Commands;
 
-class CommandBase{
+use Illuminate\Console\Command;
+
+class CommandBase extends Command {
+
     //@Todo Code here
+    protected $signature = 'fgc-quickweb:make-widget';
+    protected $description = 'Initialize a basic widget for quickweb';
+
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function handle() {
+        // Logic của command
+        $this->info('Widget initialization successful!');
+    }
+
 }

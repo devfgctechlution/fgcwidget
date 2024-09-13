@@ -1,0 +1,11 @@
+<div>
+    <!--Hàm ngôn ngữ hỗ trợ từ widge-->
+    <span style="color: white;">{{$fgcLang("simple")}}</span>
+    <!-- Sử dụng hàm gốc của laravel-->
+    <span style="color: white;">{{__("$LOWER_WIDGET_NAME$::lang.simple")}}</span>
+    <!--    Load data cho view widget -->
+    @foreach ($fgcData['posts'] as $item)
+    <span style="color: white;">{{$item['title']}}</span>
+    <span style="color: white;">{{$item['content']}}</span>
+    @endforeach
+</div>
