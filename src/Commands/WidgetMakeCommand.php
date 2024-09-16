@@ -4,7 +4,7 @@ namespace FGCQuickWeb\Widgets\Commands;
 
 use Illuminate\Console\Command;
 
-class CommandBase extends Command {
+class WidgetMakeCommand extends Command {
 
     //@Todo Code here
     protected $signature = 'fgc-quickweb:make-widget';

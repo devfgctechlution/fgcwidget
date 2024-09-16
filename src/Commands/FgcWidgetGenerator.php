@@ -1,6 +1,6 @@
 <?php
 
-namespace FGCQuickWeb\Widgets;
+namespace FGCQuickWeb\Widgets\Commands;
 
 /**
  * Description of FgcWidgetGenerator
