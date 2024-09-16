@@ -65,13 +65,6 @@ class FgcWidgetGenerator {
     protected $force = false;
 
     /**
-     * set default module type.
-     *
-     * @var string
-     */
-    protected $type = 'web';
-
-    /**
      * Enables the widget.
      *
      * @var bool
@@ -223,8 +216,8 @@ class FgcWidgetGenerator {
      *
      * @return \Nwidart\Modules\Module
      */
-    public function getModule() {
-        return $this->module;
+    public function getWidget() {
+        return $this->widget;
     }
 
     /**
@@ -234,8 +227,8 @@ class FgcWidgetGenerator {
      *
      * @return $this
      */
-    public function setModule($module) {
-        $this->module = $module;
+    public function setWidget($widget) {
+        $this->widget = $widget;
 
         return $this;
     }
@@ -246,7 +239,7 @@ class FgcWidgetGenerator {
      * @return array
      */
     public function getFolders() {
-        return $this->module->config('paths.generator');
+        return $this->widget->config('paths.generator');
     }
 
     /**
@@ -255,7 +248,7 @@ class FgcWidgetGenerator {
      * @return array
      */
     public function getFiles() {
-        return $this->module->config('stubs.files');
+        return $this->widget->config('stubs.files');
     }
 
     /**
@@ -277,16 +270,16 @@ class FgcWidgetGenerator {
     public function generate(): int {
         $name = $this->getName();
 
-        if ($this->module->has($name)) {
+        if ($this->widget->has($name)) {
             if ($this->force) {
-                $this->module->delete($name);
+                $this->widget->delete($name);
             } else {
                 $this->component->error("Widget [{$name}] already exists!");
 
                 return E_ERROR;
             }
         }
-        $this->component->info("Creating module: [$name]");
+        $this->component->info("Creating widget: [$name]");
 
         $this->generateFolders();
 
@@ -305,7 +298,7 @@ class FgcWidgetGenerator {
 
         $this->console->newLine(1);
 
-        $this->component->info("Module [{$name}] created successfully.");
+        $this->component->info("Widget [{$name}] created successfully.");
 
         return 0;
     }
