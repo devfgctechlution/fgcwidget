@@ -9,12 +9,12 @@ namespace FGCQuickWeb\Widgets\Commands;
  * @copyright (c) 2022, Fgc Techlution, JSC
  */
 use Illuminate\Support\ServiceProvider;
-use FGCQuickWeb\Widgets\Commands\CommandBase;
+use FGCQuickWeb\Widgets\Commands\WidgetMakeCommand;
 
 class CommandServiceProvider extends ServiceProvider {
 
     protected $commands = [
-        CommandBase::class,
+        WidgetMakeCommand::class,
     ];
 
     public function register() {
