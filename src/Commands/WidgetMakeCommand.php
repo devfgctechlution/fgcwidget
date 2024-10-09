@@ -2,6 +2,12 @@
 
 namespace FGCQuickWeb\Widgets\Commands;
 
+/**
+ * Description of FgcWidgetGenerator
+ *
+ * @author Hoang Bien<hoangbien264@gmail.com>
+ * @copyright (c) 2024, Fgc Techlution, JSC
+ */
 use Illuminate\Console\Command;
 
 class WidgetMakeCommand extends Command {

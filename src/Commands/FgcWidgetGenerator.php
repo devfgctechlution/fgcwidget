@@ -6,7 +6,7 @@ namespace FGCQuickWeb\Widgets\Commands;
  * Description of FgcWidgetGenerator
  *
  * @author Hoang Bien<hoangbien264@gmail.com>
- * @copyright (c) 2022, Fgc Techlution, JSC
+ * @copyright (c) 2024, Fgc Techlution, JSC
  */
 use Illuminate\Config\Repository as Config;
 use Illuminate\Console\Command as Console;

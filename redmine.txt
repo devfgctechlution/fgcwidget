@@ -1,0 +1,25 @@
+https://viblo.asia/p/tao-tag-trong-git-va-tao-release-tren-github-eW65G7Yj5DO
+##Một số lệnh cơ bản tạo tag mới
+## Để tạo một lightweight tag có tên "v1.0.0" cho Head commit hiện tại ta dùng lệnh sau,
+git tag v1.0.0
+##Lệnh tạo annotated tag có tên "v1.0.0" với thông điệp release như sau (chú thích -a nghĩa là anotated, -m nghĩa là message),
+$ git tag -a v1.0.0 -m "Releasing version v1.0.0"
+
+Xem danh sách các tag:
+git tag -l -n3
+
+Xem thông tin chi tiết của một tag
+git show v1.0
+
+Sửa tag
+git tag -a -f <tag_identifier> <commit_id>
+
+Xóa tag
+git tag -d <tag_identifier>
+
+Trường hợp tag đó đã được push khi đó ta cần xóa nó từ remote repository như sau.
+
+git push origin :v1.0
+
+Đẩy toàn bộ tag ở local lên remote repository.
+git push --tags
